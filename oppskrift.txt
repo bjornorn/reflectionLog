@@ -1,0 +1,15 @@
+Versjon 1.0
+
+* Enkle person opplysninger
+* Max 5 spørsmål
+* Oversiktlig layout
+* Mulighet for å sende mail
+* Mulighet for å printe
+
+
+Versjon 2.0
+
+* Mulighet til å lagre data
+* Integrasjon med Clockify 
+
+Versjon 3.0

@@ -1,0 +1,39 @@
+body {
+  background-color: whitesmoke;
+}
+
+#headline {
+  font-size: 6vw;
+  text-align: center;
+}
+
+.userInfo {
+  float: left;
+  /* clear: left; */
+  background-color: grey;
+  margin: 0.2vw;
+  padding: 0.3vw;
+  width: initial;
+  font-size: 4vh;
+}
+
+.userData {
+  float: left;
+  /* clear: left; */
+  background-color: grey;
+  margin: 0.2vw;
+  padding: 0.3vw;
+  width: initial;
+  font-size: 4vh;
+  font-weight: bolder;
+}
+
+.questions {
+  float: left;
+  clear: left;
+  background-color: darkgrey;
+  margin: 0.2vw;
+  padding: 0.3vw;
+  width: initial;
+  font-size: 4vh;
+}
