@@ -1,1 +1,0 @@
-db.collection('questions').get().then((snapshot) => {console.log(snapshot.docs);})

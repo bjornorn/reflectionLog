@@ -42,7 +42,6 @@
           html += `<div class="questions">${
             Object.values(logQuestions)[i]
           }</div>`;
-          console.log('kake');
         }
 
         pageDiv.innerHTML = html;
@@ -53,8 +52,7 @@
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
-
+    <!-- <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script> -->
     <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
 
     <script>
@@ -71,20 +69,18 @@
       };
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
-      firebase.analytics();
-      var db;
-      db = firebase.firestore();
+      //   firebase.analytics();
+      var db = firebase.firestore();
 
-      db.collection('questions').get().then(
-        function (collectionSnapshot) {
-          collectionSnapshot.forEach(
-            function (questionsSnapshot) {
-
-          console.log(questionsSnapshot.data());
-             });
-            }
-          
-      );
+      //   db.collection('questions').get().then(
+      db.collection('questions').onSnapshot(function (collectionSnapshot) {
+        collectionSnapshot.forEach(function (questionsSnapshot) {
+          let questionsDB = questionsSnapshot.data();
+          console.log(questionsDB);
+          //   html += `<li>` + questionsDB + `</li>`;
+          // pageDiv.innerHTML += html;
+        });
+      });
     </script>
   </body>
 </html>
