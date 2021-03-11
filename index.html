@@ -76,7 +76,7 @@
       db.collection('questions').onSnapshot(function (collectionSnapshot) {
         collectionSnapshot.forEach(function (questionsSnapshot) {
           let questionsDB = questionsSnapshot.data();
-          console.log(questionsDB);
+          console.log(questionsDB.spistFrokost);
           //   html += `<li>` + questionsDB + `</li>`;
           // pageDiv.innerHTML += html;
         });
