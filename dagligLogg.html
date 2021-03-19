@@ -5,48 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="dagligLogg.css" />
-    <script src="dagligLogg.js"></script>
+    <script src="model.js"></script>
+    <script src="view.js"></script>
+    <script src="controller.js"></script>
+    <script src="firebase.js"></script>
     <title>Daglig Refleksjonslogg</title>
   </head>
 
   <body>
     <div id="page"></div>
     <script>
-      //model
-      let pageDiv = document.getElementById('page');
-
-      let user = {
-        name: 'Bjørn',
-        email: 'bjorn@getacademy.no',
-      };
-
-      let logQuestions = {
-        q1: 'Spørsmål 1',
-        q2: 'Spørsmål 2',
-        q3: 'Spørsmål 3',
-        q4: 'Spørsmål 4',
-        q5: 'Spørsmål 5',
-      };
-
-      //view
-      view();
-      function view() {
-        let html = '';
-        html += `<div id="headline">Daglig Refleksjonslogg</div>`;
-        for (let i = 0; i < Object.keys(user).length; i++) {
-          html += `<div class="userInfo"><en>${Object.keys(user)[i]}: </div>`;
-          html += `<div class="userData">${Object.values(user)[i]}</div>`;
-        }
-
-        for (let i = 0; i < Object.keys(logQuestions).length; i++) {
-          html += `<div class="questions">${
-            Object.values(logQuestions)[i]
-          }</div>`;
-          console.log('kake');
-        }
-
-        pageDiv.innerHTML = html;
-      }
+      mainView();
+      registerSleepView();
     </script>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
@@ -75,16 +45,13 @@
       var db;
       db = firebase.firestore();
 
-      db.collection('questions').get().then(
-        function (collectionSnapshot) {
-          collectionSnapshot.forEach(
-            function (questionsSnapshot) {
-
-          console.log(questionsSnapshot.data());
-             });
-            }
-          
-      );
+      db.collection('questions')
+        .get()
+        .then(function (collectionSnapshot) {
+          collectionSnapshot.forEach(function (questionsSnapshot) {
+            console.log(questionsSnapshot.data());
+          });
+        });
     </script>
   </body>
 </html>

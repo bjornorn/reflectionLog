@@ -1,15 +1,52 @@
 body {
-  background-color: whitesmoke;
+  margin: 0px;
+  background-color: navajowhite;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
 }
 
 #headline {
+  background-color: burlywood;
+  width: 100vw;
+  padding: 1vh;
   font-size: 6vw;
   text-align: center;
+
 }
 
-.userInfo {
+.navBar {
+  background-color: burlywood;
+  width: 100vw;
+  height: 20vh;
+  position: fixed;
+  bottom: 0px;
+}
+
+.navButtons {
+  background-color: navajowhite;
+  font-size: 3vw;
+  width: 25vw;
+  height: 8vh;
+  padding: 1vw;
+  text-align: center;
+  border-radius: 36px;
   float: left;
-  /* clear: left; */
+  margin: 1vw;
+  position: relative;
+  left: 25vw;
+  top: 1vh;
+  border: olivedrab 0.2vw solid;
+}
+
+.inputField{
+  min-width: 16vw;
+  text-align: center;
+  border: olivedrab 0.2vw solid;
+  }
+
+/* .userInfo {
+  float: left;
+
   background-color: grey;
   margin: 0.2vw;
   padding: 0.3vw;
@@ -19,7 +56,6 @@ body {
 
 .userData {
   float: left;
-  /* clear: left; */
   background-color: grey;
   margin: 0.2vw;
   padding: 0.3vw;
@@ -36,4 +72,4 @@ body {
   padding: 0.3vw;
   width: initial;
   font-size: 4vh;
-}
+} */
