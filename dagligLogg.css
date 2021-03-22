@@ -42,8 +42,23 @@ body {
   min-width: 16vw;
   text-align: center;
   border: olivedrab 0.2vw solid;
-  }
+}
 
+table, td, tr {
+  border: 1px, solid, black;
+  min-width: 16vw;
+  text-align: center;
+
+}
+
+button {
+  position: fixed;
+  top: 33vh;
+  left: 32vw;
+  background-color: olivedrab;
+  border-radius: 25px;
+  width: 12vw;  
+}
 /* .userInfo {
   float: left;
 
