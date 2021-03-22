@@ -1,5 +1,5 @@
 // let soveTid = document.getElementById('input1').value;
-
+var yesterday = new Date(Date.now() - 864e5); // 864e5 == 86400000 == 24*60*60*1000
 const model = {
   user: {
     name: 'Bjørn',
@@ -14,10 +14,10 @@ const model = {
   },
 
   sleepQuestions: {
-    questions: ['Når sovnet du:', 'Når våknet du:'],
-    answerFields: ['datetime-local', 'datetime-local'],
-    defaultValue: ['', '', ''],
-    actualValue: ['', ''],
+    questions: ['Når sovnet du:', 'Når våknet du:', 'Sov du godt?'],
+    answerFields: ['date', 'time', 'text'],
+    defaultValue: ['', '', '', ''],
+    actualValue: ['', '', '', ''],
   },
 
   sleepQuery: {
