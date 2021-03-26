@@ -10,6 +10,10 @@ let nyDag = new Date().toDateString();
 console.log(nyDag);
 
 // ALT OVER ER EKSPERIMENTELT
+let currentDate = new Date();
+let d = currentDate.getDate();
+let m = currentDate.getMonth();
+let y = currentDate.getFullYear();
 
 const model = {
   user: {
@@ -18,8 +22,6 @@ const model = {
   },
 
   clockWorks: {
-    currentDate: new Date(),
-    // yesterDate: nyDato.setDate(nyDato.getDate() - 1).toLocaleDateString(),
     sleepHour: '',
     sleepMinute: '',
   },
@@ -28,17 +30,14 @@ const model = {
     questions: ['Dato:', 'Når sovnet du:', 'Når våknet du:'],
     answerFields: ['date', 'time', 'time'],
     alertFields: [false, false, false],
-    defaultValue: ['', '23:00', '07:00', ''],
+    defaultValue: ['currentDate', '23:00', '07:00', ''],
     actualValue: ['', '', ''],
   },
 
-  sleepRecords: {
-    sleep00: ['Dato', 'Sovnet klokken', 'Våknet klokken', 'Lengde Søvn'],
-    sleep01: ['01.03.2021', '23:00', '07:00', '8'],
-    sleep02: ['02.03.2021', '23:00', '07:00', '8'],
-    sleep03: ['03.03.2021', '23:00', '06:00', '8'],
-    sleep04: ['04.03.2021', '23:00', '04:00', '8'],
-    sleep05: ['05.03.2021', '23:00', '07:00', '8'],
+  statusMessages: {
+    current: '',
+    idle: 'Fyll inn informasjon i feltene over',
+    wrongValue: 'Et av feltene inneholder en ugyldig verdi',
   },
 
   sleepQuery: {
@@ -58,4 +57,3 @@ const model = {
     q5: 'Spørsmål 5',
   },
 };
-let recordCount = Object.keys(model.sleepRecords).length;

@@ -9,7 +9,7 @@ body {
   background-color: burlywood;
   width: 100vw;
   padding: 1vh;
-  font-size: 6vw;
+  font-size: 4vw;
   text-align: center;
 
 }
@@ -24,11 +24,12 @@ body {
 
 .navButtons {
   background-color: navajowhite;
-  font-size: 3vw;
+  font-size: 2vw;
   width: 25vw;
   height: 8vh;
   padding: 1vw;
   text-align: center;
+  padding-top: 4vh;
   border-radius: 36px;
   float: left;
   margin: 1vw;
@@ -36,6 +37,18 @@ body {
   left: 25vw;
   top: 1vh;
   border: olivedrab 0.2vw solid;
+}
+
+.field1 {
+  position: fixed;
+  top: 12vh;
+  left: 25vw;
+  border: olivedrab 1px solid;
+  border-radius: 12px;
+  height: 25vh;
+  width: 50vw;
+  background-color: burlywood;
+  padding: 4vh;
 }
 
 .inputField{
@@ -48,13 +61,26 @@ table, td, tr {
   border: 1px, solid, black;
   min-width: 16vw;
   text-align: center;
+  
+}
 
+.statusMsg {
+  position: relative;
+  top: 5vh;
+  left: 2vw;
+  background-color: navajowhite;
+  padding: 0.5vw;
+  text-align: center;
+  width: 30vw;
+  height: 4vh;
+  border-radius: 12px;
+  border: olivedrab 1px solid;
 }
 
 button {
-  position: fixed;
-  top: 33vh;
-  left: 32vw;
+  position: relative;
+  top: 0vh;
+  left: 35vw;
   background-color: olivedrab;
   border-radius: 25px;
   width: 12vw;  

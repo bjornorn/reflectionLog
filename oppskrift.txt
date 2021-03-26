@@ -10,6 +10,29 @@ Versjon 1.0
 Versjon 2.0
 
 * Mulighet til å lagre data
-* Integrasjon med Clockify 
+
 
 Versjon 3.0
+
+
+
+
+Workflow:
+Våknetid - sovnetid = mengde søvn
+IF Våknetid - sovnetid = negativ: sovnetid(minus 1 døgn)
+
+
+FERDIG:
+
+
+
+
+JOBBER MED: 
+* Registere timer fra skjema i database
+
+
+
+
+FREMTIDEN:
+
+
