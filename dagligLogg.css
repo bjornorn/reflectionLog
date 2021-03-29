@@ -50,6 +50,31 @@ body {
   background-color: burlywood;
   padding: 4vh;
 }
+.field2 {
+  position: fixed;
+  top: 15vh;
+  left: 15vw;
+  border: olivedrab 1px solid;
+  border-radius: 12px;
+  height: auto;
+  width: 80vw;
+  background-color: burlywood;
+  padding: 4vh;
+ 
+}
+.field3 {
+  position: relative;
+  top: 2vh;
+  left: 0vw;
+  border: olivedrab 1px solid;
+  /* border-radius: 12px; */
+  height: auto;
+  max-height: 30vh;
+  width: 76vw;
+  background-color: burlywood;
+  /* padding: 4vh; */
+  overflow-y: scroll;
+}
 
 .inputField{
   min-width: 16vw;
@@ -59,7 +84,7 @@ body {
 
 table, td, tr {
   border: 1px, solid, black;
-  min-width: 16vw;
+  min-width: 10vw;
   text-align: center;
   
 }
@@ -80,10 +105,20 @@ table, td, tr {
 button {
   position: relative;
   top: 0vh;
-  left: 35vw;
+  left: 0vh;
   background-color: olivedrab;
   border-radius: 25px;
   width: 12vw;  
+}
+
+.button2 {
+  position: relative;
+  top: 0vh;
+  left: 0vh;
+  text-align: center;
+  background-color: olivedrab;
+  border-radius: 25px;
+  width: 3vw;  
 }
 /* .userInfo {
   float: left;

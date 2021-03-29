@@ -1,19 +1,16 @@
 // let soveTid = document.getElementById('input1').value;
 var yesterday = new Date(Date.now() - 864e5); // 864e5 == 86400000 == 24*60*60*1000
-// let currentYear = new Date().getFullYear();
-// let currentMonth = new Date().getMonth() + 1;
-// let currentDay = new Date().getDate();
 
-let nyDag = new Date().toDateString();
-// let today = currentYear + '.' + currentMonth + '.' + currentDay;
 
-console.log(nyDag);
 
-// ALT OVER ER EKSPERIMENTELT
+
+// console.log(nyDag);
+
 let currentDate = new Date();
-let d = currentDate.getDate();
-let m = currentDate.getMonth();
+let d = ('0' + currentDate.getDate()).slice(-2);
+let m = ('0' + (currentDate.getMonth() + 1)).slice(-2);
 let y = currentDate.getFullYear();
+let iDag = y + '-' + m + '-' + d;
 
 const model = {
   user: {
@@ -21,16 +18,13 @@ const model = {
     email: 'bjorn@getacademy.no',
   },
 
-  clockWorks: {
-    sleepHour: '',
-    sleepMinute: '',
-  },
+
 
   sleepQuestions: {
     questions: ['Dato:', 'Når sovnet du:', 'Når våknet du:'],
     answerFields: ['date', 'time', 'time'],
     alertFields: [false, false, false],
-    defaultValue: ['currentDate', '23:00', '07:00', ''],
+    defaultValue: [iDag, '23:00', '07:00'],
     actualValue: ['', '', ''],
   },
 
