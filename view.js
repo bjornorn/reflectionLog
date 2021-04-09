@@ -3,7 +3,7 @@
 
       function mainView() {
         html = '';
-        html += `<div id="headline">Sleepy Time</div>
+        html += `<div id="headline">Sleepy Time XXX</div>
                 <div class="navBar">
                 <div class="navButtons" onclick="showRegisterPage()">Registrer Søvn</div>
                 <div class="navButtons" onclick="showStatisticsPage()">Søvn statistikk</div>
