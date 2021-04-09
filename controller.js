@@ -67,27 +67,63 @@ function calculateSleepTime() {
 }
 
 function editMode(n) {
-  for (let i = 1; i < Object.keys(database.sleepRecords).length; i++) {
-    editHtml = `<td><input type="date" value="${
-      Object.values(database.sleepRecords)[i][0]
-    }"/></td>
-     <td><input type=time" value="${
-       Object.values(database.sleepRecords)[i][1]
-     }"/></td>
-     <td><input type=time" value="${
-       Object.values(database.sleepRecords)[i][2]
-     }"/></td>
+  
+  for (let i = 0; i < Object.values(model.sleepQuestions.actualValue).length; i++) {
+    model.sleepQuestions.actualValue[i] = Object.values(database.sleepRecords)[n][i];
+    console.log(model.sleepQuestions.actualValue[i]);
+  }
+
+  for (let i = 1; i < Object.keys(database.sleepRecords).length; i++) 
+  {
+    editHtml = `
+    <td><input type="date" value="${Object.values(database.sleepRecords)[n][0]}"
+    oninput="model.sleepQuestions.actualValue[0] = this.value"/></td>
+     <td><input type="time" value="${Object.values(database.sleepRecords)[n][1]}"
+     oninput="model.sleepQuestions.actualValue[1] = this.value"/></td>
+     <td><input type="time" value="${Object.values(database.sleepRecords)[n][2]}"
+     oninput="model.sleepQuestions.actualValue[2] = this.value"/></td>
      <td>${Object.values(database.sleepRecords)[i][3]}</td>
-     <td><button class="button2" onclick="editMode(${i})">&#128393</button></td>
-     <td><button class="button2" onclick="deleteKey(${i})">⌫</button></td>
+     <td><button class="button2" onclick="saveMode(${n})">&#128190</button></td>
+     <td><button class="button2" onclick="deleteKey(${n})" disabled>⌫</button></td>
     `;
   }
   let riktigRad = 'rad' + n;
   let editRow = document.getElementById(riktigRad);
   editRow.innerHTML = editHtml;
-  // editRow.innerHTML = `<input></input>`;
+  
+  passiveRader = document.getElementsByClassName('rader');
+  for (let i = 1; i < passiveRader.length + 1; i++) {
+    console.log(passiveRader.id);
 
-  console.log(riktigRad);
+    
+    if (document.getElementById('rad' + i) != document.getElementById(riktigRad)) {
+      normalHtml = `<tr id=rad${i} class="rader">
+      <td>${Object.values(database.sleepRecords)[i][0]}</td>
+      <td>${Object.values(database.sleepRecords)[i][1]}</td>
+      <td>${Object.values(database.sleepRecords)[i][2]}</td>
+      <td>${Object.values(database.sleepRecords)[i][3]}</td>
+      <td><button class="button2" onclick="editMode(${i})" disabled>&#128393</button></td>
+      <td><button class="button2" onclick="deleteKey(${i})" disabled>⌫</button></td>                 
+      </tr>`;  
+      
+      // console.log(normalHtml);
+      let currentRow = document.getElementById('rad' + i);
+      currentRow.innerHTML = normalHtml;
+    }
+  }
+
+}
+
+function saveMode(n) {
+  Object.values(database.sleepRecords)[n][0] = model.sleepQuestions.actualValue[0]
+  Object.values(database.sleepRecords)[n][1] = model.sleepQuestions.actualValue[1]
+  Object.values(database.sleepRecords)[n][2] = model.sleepQuestions.actualValue[2]
+  
+  calculateSleepTime()
+  Object.values(database.sleepRecords)[n][3] = sleepTotal;
+
+mainView();
+statisticsView();
 }
 
 function deleteKey(n) {

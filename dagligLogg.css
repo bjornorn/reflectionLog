@@ -105,7 +105,7 @@ table, td, tr {
 button {
   position: relative;
   top: 0vh;
-  left: 0vh;
+  left: 12vw;
   background-color: olivedrab;
   border-radius: 25px;
   width: 12vw;  

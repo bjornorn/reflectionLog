@@ -3,7 +3,7 @@
 
       function mainView() {
         html = '';
-        html += `<div id="headline">Sleepy Time XXX</div>
+        html += `<div id="headline">Sleepy Time</div>
                 <div class="navBar">
                 <div class="navButtons" onclick="showRegisterPage()">Registrer Søvn</div>
                 <div class="navButtons" onclick="showStatisticsPage()">Søvn statistikk</div>
@@ -46,11 +46,12 @@
                 <div class="field3"><table id="sleepTable">`;
 
         // let j = 0;
-
-    
-     
+        // let disableButton = 'disabledButton' + i;
+        // let disabledIndex = disableButton == undefined ? '' : 'disabled';
+        let disabledIndex = '';
+        
         for (let i = 1; i < Object.keys(database.sleepRecords).length; i++) {
-            html += `<tr id=rad${i}>
+            html += `<tr id=rad${i} class="rader">
                     <td>${Object.values(database.sleepRecords)[i][0]}</td>
                     <td>${Object.values(database.sleepRecords)[i][1]}</td>
                     <td>${Object.values(database.sleepRecords)[i][2]}</td>
