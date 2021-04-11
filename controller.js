@@ -67,13 +67,14 @@ function calculateSleepTime() {
 }
 
 function editMode(n) {
-  
+
+  console.log(n)
   for (let i = 0; i < Object.values(model.sleepQuestions.actualValue).length; i++) {
     model.sleepQuestions.actualValue[i] = Object.values(database.sleepRecords)[n][i];
     console.log(model.sleepQuestions.actualValue[i]);
   }
 
-  for (let i = 1; i < Object.keys(database.sleepRecords).length; i++) 
+  for (let i = 0; i < Object.keys(database.sleepRecords).length; i++) 
   {
     editHtml = `
     <td><input type="date" value="${Object.values(database.sleepRecords)[n][0]}"
@@ -87,12 +88,14 @@ function editMode(n) {
      <td><button class="button2" onclick="deleteKey(${n})" disabled>⌫</button></td>
     `;
   }
-  let riktigRad = 'rad' + n;
+
+  console.log(n)
+  let riktigRad = 'sleep' + n;
   let editRow = document.getElementById(riktigRad);
   editRow.innerHTML = editHtml;
   
   passiveRader = document.getElementsByClassName('rader');
-  for (let i = 1; i < passiveRader.length + 1; i++) {
+  for (let i = 0; i < passiveRader.length; i++) {
     console.log(passiveRader.id);
 
     
@@ -127,16 +130,23 @@ statisticsView();
 }
 
 function deleteKey(n) {
-  //slett fra view
-  slettes = document.getElementById('rad' + n);
-  slettes.remove();
-
+  
   //slett fra objekt(database)
-  objNr = 'sleep' + n;
-  delete database.sleepRecords[objNr];
+  // objNr = 'sleep' + n;
+  console.log(n);
+  n = n.id.toString();
+  console.log(n);
+  // delete database.sleepRecords[objNr];
+  // document.getElementById(n).remove();
 
-  // console.log(slettes);
-  // console.log(objNr);
+  delete database.sleepRecords[n];
+  
+  
+
+  mainView();
+  statisticsView();
+
+
 }
 
 // sortere tabell funksjon fra https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_sort_table_desc
