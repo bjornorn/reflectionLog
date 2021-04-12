@@ -67,9 +67,9 @@ function statisticsView() {
                     <td>${Object.values(database.sleepRecords)[i][1]}</td>
                     <td>${Object.values(database.sleepRecords)[i][2]}</td>
                     <td>${Object.values(database.sleepRecords)[i][3]}</td>
-                    <td><button class="button2" onclick="editMode(${i})">&#128393</button></td>
-                    <td><button class="button2" onclick="deleteKey(${
-                      Object.keys(database.sleepRecords)[i]
+                    <td><button class="button2" onclick="editMode(${Object.keys(database.sleepRecords)[i]
+                    })">&#128393</button></td>
+                    <td><button class="button2" onclick="deleteKey(${Object.keys(database.sleepRecords)[i]
                     })">⌫</button></td>                 
                     </tr>`;
   }

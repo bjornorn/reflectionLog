@@ -67,50 +67,56 @@ function calculateSleepTime() {
 }
 
 function editMode(n) {
-
+  n = n.id;
   console.log(n)
   for (let i = 0; i < Object.values(model.sleepQuestions.actualValue).length; i++) {
-    model.sleepQuestions.actualValue[i] = Object.values(database.sleepRecords)[n][i];
+    model.sleepQuestions.actualValue[i] = Object.values(database.sleepRecords[n])[i];
     console.log(model.sleepQuestions.actualValue[i]);
   }
 
   for (let i = 0; i < Object.keys(database.sleepRecords).length; i++) 
   {
     editHtml = `
-    <td><input type="date" value="${Object.values(database.sleepRecords)[n][0]}"
+    <td><input type="date" value="${Object.values(database.sleepRecords[n])[0]}"
     oninput="model.sleepQuestions.actualValue[0] = this.value"/></td>
-     <td><input type="time" value="${Object.values(database.sleepRecords)[n][1]}"
+     <td><input type="time" value="${Object.values(database.sleepRecords[n])[1]}"
      oninput="model.sleepQuestions.actualValue[1] = this.value"/></td>
-     <td><input type="time" value="${Object.values(database.sleepRecords)[n][2]}"
+     <td><input type="time" value="${Object.values(database.sleepRecords[n])[2]}"
      oninput="model.sleepQuestions.actualValue[2] = this.value"/></td>
-     <td>${Object.values(database.sleepRecords)[i][3]}</td>
+     <td>${Object.values(database.sleepRecords[n])[3]}</td>
      <td><button class="button2" onclick="saveMode(${n})">&#128190</button></td>
      <td><button class="button2" onclick="deleteKey(${n})" disabled>⌫</button></td>
     `;
   }
 
-  console.log(n)
-  let riktigRad = 'sleep' + n;
+  let riktigRad = n;
   let editRow = document.getElementById(riktigRad);
+  console.log('sleep' + n)
   editRow.innerHTML = editHtml;
   
-  passiveRader = document.getElementsByClassName('rader');
+  disseRader = [];
+  passiveRader = document.getElementsByClassName('rader')
+  for (let r = 0; r < passiveRader.length; r++) {
+    
+    disseRader.push(passiveRader[r].id)
+  };
+  console.log('disseRader ' + disseRader);
+  console.log(riktigRad);
   for (let i = 0; i < passiveRader.length; i++) {
-    console.log(passiveRader.id);
 
     
-    if (document.getElementById('rad' + i) != document.getElementById(riktigRad)) {
-      normalHtml = `<tr id=rad${i} class="rader">
-      <td>${Object.values(database.sleepRecords)[i][0]}</td>
-      <td>${Object.values(database.sleepRecords)[i][1]}</td>
-      <td>${Object.values(database.sleepRecords)[i][2]}</td>
-      <td>${Object.values(database.sleepRecords)[i][3]}</td>
+    if (disseRader[i] != riktigRad) {
+      normalHtml = `<tr id="${Object.keys(database.sleepRecords)[i]}" class="rader">
+      <td>${Object.values(database.sleepRecords[n])[0]}</td>
+      <td>${Object.values(database.sleepRecords[n])[1]}</td>
+      <td>${Object.values(database.sleepRecords[n])[2]}</td>
+      <td>${Object.values(database.sleepRecords[n])[3]}</td>
       <td><button class="button2" onclick="editMode(${i})" disabled>&#128393</button></td>
       <td><button class="button2" onclick="deleteKey(${i})" disabled>⌫</button></td>                 
       </tr>`;  
       
       // console.log(normalHtml);
-      let currentRow = document.getElementById('rad' + i);
+      let currentRow = document.getElementById(disseRader[i]);
       currentRow.innerHTML = normalHtml;
     }
   }
@@ -118,15 +124,19 @@ function editMode(n) {
 }
 
 function saveMode(n) {
-  Object.values(database.sleepRecords)[n][0] = model.sleepQuestions.actualValue[0]
-  Object.values(database.sleepRecords)[n][1] = model.sleepQuestions.actualValue[1]
-  Object.values(database.sleepRecords)[n][2] = model.sleepQuestions.actualValue[2]
+  n = n.id;
+  console.log(n)
+  console.log(model.sleepQuestions.actualValue)
+  database.sleepRecords[n][0] = model.sleepQuestions.actualValue[0].slice();
+  database.sleepRecords[n][1] = model.sleepQuestions.actualValue[1].slice();
+  database.sleepRecords[n][2] = model.sleepQuestions.actualValue[2].slice();
   
   calculateSleepTime()
-  Object.values(database.sleepRecords)[n][3] = sleepTotal;
-
-mainView();
-statisticsView();
+  database.sleepRecords[n][3] = sleepTotal;
+  
+  mainView();
+  statisticsView();
+  console.log(model.sleepQuestions.actualValue)
 }
 
 function deleteKey(n) {
