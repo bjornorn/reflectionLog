@@ -23,18 +23,17 @@ IF Våknetid - sovnetid = negativ: sovnetid(minus 1 døgn)
 
 
 FERDIG:
-
-
-
-
-JOBBER MED: 
 * Registere timer fra skjema i database
-* fiks så register søvn sjekker om "sleepNO" er ledig
 * fiks så man kan redigere nye registrerte søvn seanser
 
 
 
 
+JOBBER MED: 
+* fiks så register søvn sjekker om "sleepNO" er ledig
+
+
+
+
 FREMTIDEN:
-
-
+ 

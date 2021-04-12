@@ -11,7 +11,6 @@ const database = {
   sleepData: { 
     headers: ['Dato', 'Sovnet', 'Våknet', 'Sov i </br>(timer:min)'] 
   },
-  };
+};
 
 let recordCount = Object.keys(database.sleepRecords).length;
-
