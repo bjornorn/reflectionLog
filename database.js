@@ -9,7 +9,8 @@ const database = {
     sleep6: ['2021-02-06', '23:00', '07:00', '8:0'],
   },
   sleepData: { 
-    headers: ['Dato', 'Sovnet', 'Våknet', 'Sov i </br>(timer:min)'] },
+    headers: ['Dato', 'Sovnet', 'Våknet', 'Sov i </br>(timer:min)'] 
+  },
   };
 
 let recordCount = Object.keys(database.sleepRecords).length;

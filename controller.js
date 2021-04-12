@@ -1,11 +1,11 @@
-function showRegisterPage() {
-  mainView();
-  registerSleepView();
-}
-
-function showStatisticsPage() {
-  mainView();
-  statisticsView();
+function clockWorks() {
+// let yesterday = new Date(Date.now() - 864e5); // 864e5 == 86400000 == 24*60*60*1000
+currentDate = new Date();
+d = ('0' + currentDate.getDate()).slice(-2);
+m = ('0' + (currentDate.getMonth() + 1)).slice(-2);
+y = currentDate.getFullYear();
+iDag = y + '-' + m + '-' + d;
+model.sleepQuestions.defaultValue[0] = iDag;
 }
 
 function storeSleepRecord() {
@@ -21,7 +21,6 @@ function storeSleepRecord() {
       model.sleepQuestions.alertFields[i] = 'Sett inn en gyldig verdi';
       return alert('feil verdi');
     }
-
     if (model.sleepQuestions.actualValue[i] != false) {
       model.sleepQuestions.alertFields[i] = true;
     }
@@ -38,8 +37,7 @@ function storeSleepRecord() {
   // console.log(Object.values(database.sleepRecords)[6]);
   // database.sleepRecords.sleep06 = model.sleepQuestions.actualValue[1];
 
-  showRegisterPage();
-  // if (model.sleepQuestions.actualValue[i] == "") {
+  statisticsView();  // if (model.sleepQuestions.actualValue[i] == "") {
   //  alert ('kake');
 }
 
@@ -67,7 +65,7 @@ function calculateSleepTime() {
 }
 
 function editMode(n) {
-  n = n.id;
+  // n = n.id;
   console.log(n)
   for (let i = 0; i < Object.values(model.sleepQuestions.actualValue).length; i++) {
     model.sleepQuestions.actualValue[i] = Object.values(database.sleepRecords[n])[i];
@@ -84,7 +82,7 @@ function editMode(n) {
      <td><input type="time" value="${Object.values(database.sleepRecords[n])[2]}"
      oninput="model.sleepQuestions.actualValue[2] = this.value"/></td>
      <td>${Object.values(database.sleepRecords[n])[3]}</td>
-     <td><button class="button2" onclick="saveMode(${n})">&#128190</button></td>
+     <td><button id="${Object.keys(database.sleepRecords)[i]}" class="button2" onclick="saveMode(this.id)">&#128190</button></td>
      <td><button class="button2" onclick="deleteKey(${n})" disabled>⌫</button></td>
     `;
   }
@@ -124,8 +122,19 @@ function editMode(n) {
 }
 
 function saveMode(n) {
-  n = n.id;
   console.log(n)
+  // n = n.id;
+  console.log(n)
+
+  if (model.sleepQuestions.actualValue[0].split('-')[0].length != 4) {    
+    model.sleepQuestions.actualValue[0] = false;
+    return;
+  }
+  if (model.sleepQuestions.actualValue[0].split('-')[1] > 12) {    
+    model.sleepQuestions.actualValue[0] = false;
+    return;
+  }
+
   console.log(model.sleepQuestions.actualValue)
   database.sleepRecords[n][0] = model.sleepQuestions.actualValue[0].slice();
   database.sleepRecords[n][1] = model.sleepQuestions.actualValue[1].slice();
@@ -144,7 +153,7 @@ function deleteKey(n) {
   //slett fra objekt(database)
   // objNr = 'sleep' + n;
   console.log(n);
-  n = n.id.toString();
+  // n = n.id.toString();
   console.log(n);
   // delete database.sleepRecords[objNr];
   // document.getElementById(n).remove();

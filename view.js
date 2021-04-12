@@ -5,14 +5,15 @@ function mainView() {
   html = '';
   html += `<div id="headline">Sleepy Time</div>
                 <div class="navBar">
-                <div class="navButtons" onclick="showRegisterPage()">Registrer Søvn</div>
-                <div class="navButtons" onclick="showStatisticsPage()">Søvn statistikk</div>
+                <div class="navButtons" onclick="registerSleepView()">Registrer Søvn</div>
+                <div class="navButtons" onclick="statisticsView()">Søvn statistikk</div>
                 </div>`;
 
   document.getElementById('page').innerHTML = html;
 }
 
 function registerSleepView() {
+  mainView();
   model.sleepQuestions.actualValue = model.sleepQuestions.defaultValue;
   html += `<div class="field1"><table>`;
   for (let i = 0; i < Object.keys(model.sleepQuestions.questions).length; i++) {
@@ -28,20 +29,16 @@ function registerSleepView() {
                        Object.values(model.sleepQuestions.defaultValue)[i]
                      }"
                      oninput="model.sleepQuestions.actualValue[${i}] = this.value" />
-                     </td>
-                     <td>${
-                       Object.values(model.sleepQuestions.alertFields)[i]
-                     }</td>
+                     </td>             
                      </tr>`;
   }
-  html += `</table>
-                                        <div class="statusMsg">${model.statusMessages.current}</div>`;
-  html += `<button onclick="storeSleepRecord()">Registrer Søvn</button>
-                            </div>`;
+  html += `</table><button onclick="storeSleepRecord()">Registrer Søvn</button></div>`;
+
   document.getElementById('page').innerHTML = html;
 }
 
 function statisticsView() {
+  mainView();
   html += `<div class="field2"><table>`;
   html += `<tr>`;
 
@@ -63,15 +60,17 @@ function statisticsView() {
 
   for (let i = 0; i < Object.keys(database.sleepRecords).length; i++) {
     html += `<tr id="${Object.keys(database.sleepRecords)[i]}" class="rader">
-                    <td>${Object.values(database.sleepRecords)[i][0]}</td>
-                    <td>${Object.values(database.sleepRecords)[i][1]}</td>
-                    <td>${Object.values(database.sleepRecords)[i][2]}</td>
-                    <td>${Object.values(database.sleepRecords)[i][3]}</td>
-                    <td><button class="button2" onclick="editMode(${Object.keys(database.sleepRecords)[i]
-                    })">&#128393</button></td>
-                    <td><button class="button2" onclick="deleteKey(${Object.keys(database.sleepRecords)[i]
-                    })">⌫</button></td>                 
-                    </tr>`;
+                <td>${Object.values(database.sleepRecords)[i][0]}</td>
+                <td>${Object.values(database.sleepRecords)[i][1]}</td>
+                <td>${Object.values(database.sleepRecords)[i][2]}</td>
+                <td>${Object.values(database.sleepRecords)[i][3]}</td>
+                <td><button id="${
+                  Object.keys(database.sleepRecords)[i]
+                }" class="button2" onclick="editMode(this.id)">&#128393</button></td>
+                <td><button id="${
+                  Object.keys(database.sleepRecords)[i]
+                }" class="button2" onclick="deleteKey(this.id)">⌫</button></td>                 
+                </tr>`;
   }
 
   html += `</table></div></div>`;
